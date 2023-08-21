@@ -1,0 +1,18 @@
+# コンテナ構築用docker-composeファイル
+version: '3.2'
+
+services:
+  # アプリケーション用定義
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: app
+    ports:
+      - "8080:8080"
+    # 環境変数を指定
+    environment:
+      - ENV_STRING=hoge
+    #自動起動設定
+    restart: always
+    tty: true
